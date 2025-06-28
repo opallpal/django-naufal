@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Toko Elektronik</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- Kiri: Brand -->
+        <a class="navbar-brand" href="#">Toko Saya</a>
+
+        <!-- Toggle untuk mobile -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Kanan: Menu navigasi -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/toko">Toko</a></li>
+                <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Layout -->
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar -->
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky pt-3">
+                <h5 class="text-center">Menu</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/">Kelola Produk</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <!-- Header -->
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Dashboard</h1>
+            </div>
+
+            <!-- Statistik -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Produk</h5>
+                            <p class="card-text">{{ total_produk }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card text-white bg-success">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Stok</h5>
+                            <p class="card-text">{{ total_stok }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabel Produk -->
+            <h4>Daftar Produk</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Harga</th>
+                        <th>Stok</th>
+                        <th>Kategori</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produk in produk_list %}
+                    <tr>
+                        <td>{{ produk.nama }}</td>
+                        <td>Rp {{ produk.harga }}</td>
+                        <td>{{ produk.stok }}</td>
+                        <td>{{ produk.kategori }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+<!-- JS Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
